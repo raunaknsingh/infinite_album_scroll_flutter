@@ -41,7 +41,7 @@ class AlbumsHomePage extends StatelessWidget {
                       dio: Dio(),
                       connectivity: Connectivity(),
                     ),
-                  ),
+                  )..add(FetchPhotos(album.id)),
                   child: AlbumCard(
                     album: album,
                   ),
