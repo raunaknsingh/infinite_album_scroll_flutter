@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../../core/error/Failure.dart';
+import '../../core/error/failure.dart';
 import '../entity/photo.dart';
 
 abstract interface class PhotoRepository {

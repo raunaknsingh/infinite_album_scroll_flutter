@@ -2,7 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/src/either.dart';
 import 'package:navatech_infinite_album_scroll/common/constants.dart';
-import 'package:navatech_infinite_album_scroll/core/error/Failure.dart';
+import 'package:navatech_infinite_album_scroll/core/error/failure.dart';
 import 'package:navatech_infinite_album_scroll/core/error/server_exception.dart';
 import 'package:navatech_infinite_album_scroll/data/local/local_storage.dart';
 import 'package:navatech_infinite_album_scroll/domain/entity/album.dart';
