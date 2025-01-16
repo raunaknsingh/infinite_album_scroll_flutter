@@ -2,11 +2,15 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navatech_infinite_album_scroll/data/local/local_storage.dart';
 import 'package:navatech_infinite_album_scroll/data/repository_impl/album_repository_impl.dart';
 import 'package:navatech_infinite_album_scroll/presentation/bloc/album_bloc/album_bloc.dart';
 import 'package:navatech_infinite_album_scroll/presentation/pages/albums_home_page.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  final localStorage = LocalStorage();
+  await localStorage.init();
   runApp(const MyApp());
 }
 
@@ -23,6 +27,7 @@ class MyApp extends StatelessWidget {
             AlbumRepositoryImpl(
               dio: Dio(),
               connectivity: Connectivity(),
+              localStorage: LocalStorage()
             ),
           ),
         )
