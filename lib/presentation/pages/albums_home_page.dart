@@ -27,8 +27,10 @@ class AlbumsHomePage extends StatelessWidget {
         } else if (albumState is AlbumLoaded) {
           final albums = albumState.albums;
           if (albums.isEmpty) {
-            return const Text(
-              'No albums present',
+            return const Center(
+              child: Text(
+                'No albums present',
+              ),
             );
           }
           return ListView.builder(
