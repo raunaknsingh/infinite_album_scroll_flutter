@@ -2,6 +2,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navatech_infinite_album_scroll/data/local/local_storage.dart';
 import 'package:navatech_infinite_album_scroll/data/repository_impl/photo_repository_impl.dart';
 import 'package:navatech_infinite_album_scroll/presentation/bloc/album_bloc/album_bloc.dart';
 import 'package:navatech_infinite_album_scroll/presentation/bloc/photo_bloc/photo_bloc.dart';
@@ -42,6 +43,7 @@ class AlbumsHomePage extends StatelessWidget {
                     PhotoRepositoryImpl(
                       dio: Dio(),
                       connectivity: Connectivity(),
+                      localStorage: LocalStorage()
                     ),
                   )..add(FetchPhotos(album.id)),
                   child: AlbumCard(
