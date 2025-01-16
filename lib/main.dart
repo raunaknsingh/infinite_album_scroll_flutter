@@ -1,4 +1,10 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navatech_infinite_album_scroll/data/repository_impl/album_repository_impl.dart';
+import 'package:navatech_infinite_album_scroll/presentation/bloc/album_bloc/album_bloc.dart';
+import 'package:navatech_infinite_album_scroll/presentation/pages/albums_home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,24 +16,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Infinite Album and Photo Scroll',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => AlbumBloc(
+            AlbumRepositoryImpl(
+              dio: Dio(),
+              connectivity: Connectivity(),
+            ),
+          ),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Infinite Album and Photo Scroll',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: AlbumsHomePage(),
       ),
-      home: AlbumWithPhotosPage(),
     );
   }
 }
-
-class AlbumWithPhotosPage extends StatelessWidget {
-  const AlbumWithPhotosPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
-  }
-}
-
-
