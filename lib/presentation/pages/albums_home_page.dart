@@ -35,7 +35,7 @@ class AlbumsHomePage extends StatelessWidget {
             );
           }
           return ListView.builder(
-              itemCount: albums.length,
+              itemCount: double.maxFinite.toInt(),
               itemBuilder: (context, index) {
                 final album = albums[index % albums.length];
                 return BlocProvider(
