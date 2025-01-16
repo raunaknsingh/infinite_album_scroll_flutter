@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/entity/album.dart';
+
 class AlbumCard extends StatelessWidget {
-  const AlbumCard({super.key});
+  final Album album;
+
+  const AlbumCard({super.key, required this.album});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 100,
-        width: double.infinity,
-        color: Colors.blue,
+    return Card(
+      margin: const EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              album.title,
+              style: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

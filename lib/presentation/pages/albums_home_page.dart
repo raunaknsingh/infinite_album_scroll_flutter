@@ -34,6 +34,7 @@ class AlbumsHomePage extends StatelessWidget {
           return ListView.builder(
               itemCount: albums.length,
               itemBuilder: (context, index) {
+                final album = albums[index % albums.length];
                 return BlocProvider(
                   create: (_) => PhotoBloc(
                     PhotoRepositoryImpl(
@@ -41,7 +42,9 @@ class AlbumsHomePage extends StatelessWidget {
                       connectivity: Connectivity(),
                     ),
                   ),
-                  child: AlbumCard(),
+                  child: AlbumCard(
+                    album: album,
+                  ),
                 );
               });
         } else if (albumState is AlbumError) {
