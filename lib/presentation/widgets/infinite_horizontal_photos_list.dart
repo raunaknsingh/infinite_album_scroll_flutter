@@ -60,3 +60,4 @@ class InfiniteHorizontalPhotosList extends StatelessWidget {
     );
   }
 }
+
