@@ -1,6 +1,12 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navatech_infinite_album_scroll/data/repository_impl/photo_repository_impl.dart';
 import 'package:navatech_infinite_album_scroll/presentation/bloc/album_bloc/album_bloc.dart';
+import 'package:navatech_infinite_album_scroll/presentation/bloc/photo_bloc/photo_bloc.dart';
+
+import '../widgets/album_card.dart';
 
 class AlbumsHomePage extends StatelessWidget {
   const AlbumsHomePage({super.key});
@@ -28,9 +34,14 @@ class AlbumsHomePage extends StatelessWidget {
           return ListView.builder(
               itemCount: albums.length,
               itemBuilder: (context, index) {
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Item$index'),
+                return BlocProvider(
+                  create: (_) => PhotoBloc(
+                    PhotoRepositoryImpl(
+                      dio: Dio(),
+                      connectivity: Connectivity(),
+                    ),
+                  ),
+                  child: AlbumCard(),
                 );
               });
         } else if (albumState is AlbumError) {
