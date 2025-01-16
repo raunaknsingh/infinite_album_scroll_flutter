@@ -1,6 +1,8 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'photo.g.dart';
+
 @HiveType(typeId: 1)
 @JsonSerializable()
 class Photo {
@@ -16,4 +18,6 @@ class Photo {
 
   Photo({required this.id, required this.title, required this.url});
 
+  factory Photo.fromJson(Map<String, dynamic> json) => _$PhotoFromJson(json);
+  Map<String, dynamic> toJson() => _$PhotoToJson(this);
 }
